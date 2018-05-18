@@ -10,31 +10,28 @@ write_files:
 #USER DATA - Cloudsigma
 - path: /var/lib/micado/occopus/temp_user_data.yaml
   content: |
-    user_data:
-      auth_data:
-        type: cloudsigma
+    user_data: 
+      auth_data: 
         email: h.chen@westminster.ac.uk
         password: hchen1983
-
-      resource:
         type: cloudsigma
-        endpoint: https://zrh.cloudsigma.com/api/2.0
+      resource: 
+        description: 
+          cpu: 1000
+          mem: 1073741824
+          nics: 
+            - 
+              ip_v4_conf: 
+                conf: dhcp
+          pubkeys: 
+            - 7ca610b3-ee7f-486c-a1e0-866732a21348
+          vnc_password: secret
+        endpoint: "https://zrh.cloudsigma.com/api/2.0"
         libdrive_id: 87ce928e-e0bc-4cab-9502-514e523783e3
-        description:
-            cpu: 1000
-            mem: 1073741824
-            vnc_password: secret
-            pubkeys:
-                -
-                    7ca610b3-ee7f-486c-a1e0-866732a21348
-            nics:
-                -
-                     ip_v4_conf:
-                        conf: dhcp
-
-     scaling:
-        min: 1
+        type: cloudsigma
+      scaling: 
         max: 4
+        min: 1
 
 #USER DATA - EC2
 #- path: /var/lib/micado/occopus/temp_user_data.yaml
@@ -291,7 +288,7 @@ runcmd:
   - resolvconf -u
   - echo nameserver 8.8.8.8 >> /etc/resolv.conf
 # Download config files
-  - export GITHUB_URL=https://raw.githubusercontent.com//pk1983/MiCADO/master
+  - export GITHUB_URL=https://raw.githubusercontent.com/pk1983/MiCADO/master
   - curl -L $GITHUB_URL/configs/executor_config.sh --create-dirs -o /etc/prometheus_executor/conf.sh
   - curl -L $GITHUB_URL/configs/consul_checks.json --create-dirs -o /etc/consul/checks.json
 # Change health check ip address for host ip
