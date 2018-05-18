@@ -19,7 +19,7 @@ write_files:
       resource:
         type: cloudsigma
         endpoint: https://zrh.cloudsigma.com/api/2.0
-        libdrive_id: 7ca610b3-ee7f-486c-a1e0-866732a21348
+        libdrive_id: 87ce928e-e0bc-4cab-9502-514e523783e3
         description:
             cpu: 1000
             mem: 1073741824
